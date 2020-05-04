@@ -1,3 +1,12 @@
+# DataFrames
+import pandas as pd
+# Visualizations
+import matplotlib.pyplot as plt
+# Statistics
+from scipy import stats 
+# Array and Array Math
+import numpy as np
+
 # Random generates an Entry-Process (= "the time a customer enters the waiting area")
 def entry_process(customers, entry_variable, entry_variable_parameters):
     # Set up Collector for results
@@ -108,7 +117,7 @@ def show_mcq (qspace, title, breakoff):
         plt.show()
         
 # Compare a certain case to model-based generated data
-def compare(qspace, case, visualize):
+def compare(qspace, case, visualize, title):
     # Visualize if Chosen
     if visualize:
         # Visualize Queing System
