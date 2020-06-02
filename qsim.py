@@ -126,12 +126,13 @@ def compare(qspace, case, visualize, title):
         plt.plot(case.exit, color = 'red')
         plt.show()
         # Show Case
-        plt.title("Absolute Distance from Median")
-        plt.ylabel("Absolute Distance")
-        plt.plot(abs(qspace.median(axis = 1) - case.exit), color = "red")
+        plt.title("Z-Score")
+        plt.ylabel("Z-Score")
+        plt.xlabel("Customer")        
+        plt.plot((case.exit - qspace.mean(axis = 1)) / qspace.std(axis = 1))     
         # Visualize Mean
-        plt.hlines(abs(qspace.median(axis = 1) - case.exit).mean(), xmin = 0, xmax = case.shape[0], color = "orange")
-        plt.legend(['Absolute Distance','Mean over Time'])
+        plt.hlines(((case.exit - qspace.mean(axis = 1)) / qspace.std(axis = 1)).mean(), xmin = 0, xmax = case.shape[0], color = "orange")
+        plt.legend(['Z-Score of each Customer','Average of all customers Z-Scores'])
         plt.show()
     # Return Mean Square Error
-    return abs(qspace.median(axis = 1) - case.exit).mean()
+    return ((case.exit - qspace.mean(axis = 1)) / qspace.std(axis = 1)).mean()
